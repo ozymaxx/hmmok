@@ -1,4 +1,4 @@
-function learn(numOfStates,dataFile)
+function learn(numOfStates,dataFile,hmmModelFile)
     # load the training data
     dataF = open(dataFile)
     line = ""
@@ -208,10 +208,10 @@ function learn(numOfStates,dataFile)
         println("Epoch #$epoch, log(O|Lambda) = $(sum(P))")
     end
     
-    println("Training done! Parameters of the model has been written to HMMDescription.txt file.")
+    println("Training done! Parameters of the model has been written to $(hmmModelFile) file.")
     
     # save the model to a txt file
-    #writeModel('HMMDescription.txt',A,B,pii)
+    writeModel(hmmModelFile,A,B,pii)
     
     return A,B,pii
 end
