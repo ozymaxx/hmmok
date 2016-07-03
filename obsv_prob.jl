@@ -5,8 +5,6 @@ function obsv_prob(testSeqFile,modelFile)
     testSeqStr = split(line," ")
     testSeq = map(x->parse(Int,x),testSeqStr)
     
-    println(testSeq)
-    
     # init the model vars
     A,B,pi = loadModelFile(modelFile)
     
@@ -24,7 +22,7 @@ function obsv_prob(testSeqFile,modelFile)
         c[1] = 1 / sum(alpha[1,:])
     end
     # forward algorithm init. step, scaling cont'd
-    alpha[1,:] = c[1]*alpha[1,:];
+    alpha[1,:] = c[1]*alpha[1,:]
     
     # forward algorithm, inductive step
     for t in 1:(timeTaken-1)
@@ -44,7 +42,7 @@ function obsv_prob(testSeqFile,modelFile)
     
     # using scales, compute the probability with its logarithm
     logprob = -sum(log(c))
-    probOGivenLambda = exp(logprob);
+    probOGivenLambda = exp(logprob)
     
     return probOGivenLambda,logprob
 end
