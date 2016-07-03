@@ -4,6 +4,7 @@ function obsv_prob(testSeqFile,modelFile)
     line = readline(test_file)
     testSeqStr = split(line," ")
     testSeq = map(x->parse(Int,x),testSeqStr)
+    close(test_file)
     
     # init the model vars
     A,B,pi = loadModelFile(modelFile)
